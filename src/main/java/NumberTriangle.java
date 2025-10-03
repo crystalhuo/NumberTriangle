@@ -107,7 +107,7 @@ public class NumberTriangle {
      */
     public int retrieve(String path) {
 
-        if (path.isEmpty()){
+        if (path == null || path.isEmpty()) {
             return getRoot();
         }
 
