@@ -140,10 +140,13 @@ public class NumberTriangle {
         // open the file and get a BufferedReader object whose methods
         // are more convenient to work with when reading the file contents.
         InputStream inputStream = NumberTriangle.class.getClassLoader().getResourceAsStream(fname);
+
+
+        if (inputStream == null) {
+            throw new FileNotFoundException("File not found in resources: " + fname);
+        }
+
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-
-
-
 
         List<NumberTriangle[]> triangles = new ArrayList<>();
 
@@ -157,7 +160,6 @@ public class NumberTriangle {
             // remove when done; this line is included so running starter code prints the contents of the file
             System.out.println(line);
 
-
             String[] nums = line.split("\\s+");
             NumberTriangle[] currentRow = new NumberTriangle[nums.length];
             for (int i = 0; i < nums.length; i++) {
@@ -170,7 +172,6 @@ public class NumberTriangle {
         }
         br.close();
 
-
         for (int i = 0; i < triangles.size() - 1; i++) {
             NumberTriangle[] row = triangles.get(i);
             NumberTriangle[] nextRow = triangles.get(i + 1);
@@ -182,6 +183,7 @@ public class NumberTriangle {
         top = triangles.isEmpty() ? null : triangles.get(0)[0];
         return top;
     }
+
 
     public static void main(String[] args) throws IOException {
 
