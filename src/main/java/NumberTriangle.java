@@ -189,6 +189,10 @@ public class NumberTriangle {
 
         NumberTriangle mt = NumberTriangle.loadTriangle("input_tree.txt");
 
+        if(mt == null){
+            mt.maxSumPath();
+            System.out.println(mt.getRoot());
+        }
          //[not for credit]
          //you can implement NumberTriangle's maxPathSum method if you want to try to solve
          //Problem 18 from project Euler [not for credit]
